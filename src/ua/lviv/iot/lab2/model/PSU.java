@@ -17,4 +17,8 @@ public class PSU extends ComputerPart {
     public void setWattage(int wattage) {
         this.wattage = wattage;
     }
+
+    public String toString(){
+        return super.toString() + String.format("Wattage: %d Wtt", wattage) + System.lineSeparator();
+    }
 }

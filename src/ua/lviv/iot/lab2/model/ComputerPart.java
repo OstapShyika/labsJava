@@ -32,4 +32,10 @@ public abstract class ComputerPart {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString(){
+        return "Price: " + this.price + ", Manufacturer: " + this.manufacturer + ", Type: " + this.type + System.lineSeparator();
+    }
 }
+

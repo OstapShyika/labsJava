@@ -17,5 +17,10 @@ public class CPU extends ComputerPart {
     public void setFrequency(double frequency) {
         this.frequency = frequency;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + String.format("Frequency: %.1f HZ", frequency) + System.lineSeparator();
+    }
 }
 
