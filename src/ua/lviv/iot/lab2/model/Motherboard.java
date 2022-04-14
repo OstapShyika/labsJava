@@ -17,4 +17,8 @@ public class Motherboard extends ComputerPart {
     public void setMaxRAM(int max_ram) {
         this.max_ram = max_ram;
     }
+
+    public String toString(){
+        return super.toString() + String.format("Max RAM: %d GB", max_ram) + System.lineSeparator();
+    }
 }

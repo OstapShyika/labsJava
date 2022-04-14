@@ -26,4 +26,11 @@ public class Monitor extends ComputerPart {
     public void setResolution(String resolution) {
         this.resolution = resolution;
     }
+
+    @Override
+    public String toString(){
+        return super.toString() + "Size: " +
+                this.size+ "cm, " + "Resolution: " +
+                this.resolution + System.lineSeparator();
+    }
 }

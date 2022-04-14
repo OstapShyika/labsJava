@@ -8,9 +8,9 @@ public interface IComputerStoreManager {
 
     public List<List<ComputerPart>> findByRequestedTotalPrice(List<ComputerPart> details);
 
-    List<ComputerPart> sortByPrice(List <ComputerPart> details, boolean isReversed);
+    void sortByPrice(List <ComputerPart> details, boolean is_reversed);
 
-    List<ComputerPart> sortByManufacturer(List <ComputerPart> details, boolean isReversed);
+    void sortByManufacturer(List <ComputerPart> details, boolean is_reversed);
 
 
 }

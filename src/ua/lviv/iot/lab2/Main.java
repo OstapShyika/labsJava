@@ -19,5 +19,13 @@ public class Main {
         PSU psu1 = new PSU(1, "fgm", 2);
         SSD ssd1 = new SSD(1, "Shaome", 1, 1, 1);
 
+        List<ComputerPart> details = new LinkedList<>();
+        details.add(case1);
+        details.add(cpu1);
+        details.add(keyboard1);
+        details.add(monitor1);
+        details.add(motherboard1);
+        a.sortByPrice(details, true);
+        System.out.println(a.findByRequestedTotalPrice(details));
     }
 }

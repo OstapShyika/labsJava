@@ -35,4 +35,10 @@ public class SSD extends ComputerPart {
     public void setWriteSpeed(int write_speed) {
         this.write_speed = write_speed;
     }
+
+    public String toString(){
+        return super.toString() + String.format("Storage: %d GB, " +
+                "Read Speed: %d mb/s, " +
+                "Write Speed: %d mb/s", storage_capacity, read_speed, write_speed) + System.lineSeparator();
+    }
 }

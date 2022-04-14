@@ -16,4 +16,9 @@ public class Case extends ComputerPart {
         this.weight = weight;
     }
 
+    @Override
+    public String toString(){
+        return super.toString() + String.format("Weight: %d kg", weight) + System.lineSeparator();
+    }
+
 }
