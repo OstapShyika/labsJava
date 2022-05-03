@@ -1,29 +1,16 @@
 package ua.lviv.iot.lab2.model;
 
+import lombok.Getter;
 import ua.lviv.iot.lab2.model.ComputerPart;
-
+@Getter
 public class Monitor extends ComputerPart {
 
     private int size;
     private String resolution;
 
     public Monitor(int price, String manufacturer, int size, String resolution){
-        super(price, manufacturer);
+        super("Monitor", price, manufacturer);
         this.size = size;
-        this.resolution = resolution;
-    }
-
-    public int getSize( ) {
-        return size;
-    }
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public String getResolution( ) {
-        return resolution;
-    }
-    public void setResolution(String resolution) {
         this.resolution = resolution;
     }
 

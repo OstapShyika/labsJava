@@ -1,11 +1,15 @@
 package ua.lviv.iot.lab2.manager.impl;
 
+import lombok.Getter;
 import ua.lviv.iot.lab2.manager.IComputerStoreManager;
 
 import java.util.*;
 
 import ua.lviv.iot.lab2.model.ComputerPart;
 
+import static java.util.Collections.emptyList;
+
+@Getter
 public class ComputerStoreManager implements IComputerStoreManager {
 
     private Map<String, List<ComputerPart>> detailsMap = new HashMap<>();
@@ -26,14 +30,16 @@ public class ComputerStoreManager implements IComputerStoreManager {
 
     @Override
     public List<List<ComputerPart>> findByRequestedTotalPrice(List<ComputerPart> details) {
+        sortByPrice(details, false);
         List<List<ComputerPart>> affordable= new LinkedList<>();
-        for (int i = 0; i< details.size(); i++){
-            int temp_sum = 0;
-            for (int j = 0; j < details.subList(0,i).size(); j++) {
-                temp_sum += details.subList(0, i).get(j).getPrice();
-            }
-            if (temp_sum < 500){
-                affordable.add(details.subList(0,i));
+        for (int i = 0; i < details.size(); i++){
+
+            for (int j = i; j < details.size(); j++){
+
+                if (TotalPrice(details.subList(i, j+1)) < 500){
+
+                    affordable.add(details.subList(i, j+1));
+                }
             }
         }
         return affordable;
@@ -59,4 +65,15 @@ public class ComputerStoreManager implements IComputerStoreManager {
             details.sort(Comparator.comparing(ComputerPart::getManufacturer));
 
     }
+
+    @Override
+    public double TotalPrice(List<ComputerPart> details) {
+        double sum = 0;
+        for (int i = 0; i < details.size(); i++){
+            sum += details.get(i).getPrice();
+        }
+        return sum;
+    }
+
+
 }

@@ -12,5 +12,5 @@ public interface IComputerStoreManager {
 
     void sortByManufacturer(List <ComputerPart> details, boolean is_reversed);
 
-
+    double TotalPrice(List <ComputerPart> details);
 }

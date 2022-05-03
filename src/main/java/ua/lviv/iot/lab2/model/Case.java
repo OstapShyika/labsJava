@@ -1,18 +1,14 @@
 package ua.lviv.iot.lab2.model;
 
+import lombok.Getter;
+
+@Getter
 public class Case extends ComputerPart {
 
     private int weight;
 
     public Case(int price, String manufacturer, int weight){
-        super(price, manufacturer);
-        this.weight = weight;
-    }
-
-    public int getWeight( ) {
-        return weight;
-    }
-    public void setWeight(int weight) {
+        super("Case", price, manufacturer);
         this.weight = weight;
     }
 
