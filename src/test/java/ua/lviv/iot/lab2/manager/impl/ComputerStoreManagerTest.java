@@ -1,6 +1,5 @@
 package ua.lviv.iot.lab2.manager.impl;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ua.lviv.iot.lab2.model.*;
@@ -84,7 +83,7 @@ class ComputerStoreManagerTest {
 
     @Test
     void TotalPriceTest() {
-        Assertions.assertEquals(3999, manager.TotalPrice(details));
+        Assertions.assertEquals(3999, manager.totalPrice(details));
     }
 
     @Test
