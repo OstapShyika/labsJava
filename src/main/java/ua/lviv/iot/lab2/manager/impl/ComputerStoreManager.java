@@ -1,11 +1,13 @@
 package ua.lviv.iot.lab2.manager.impl;
 
+import lombok.Getter;
 import ua.lviv.iot.lab2.manager.IComputerStoreManager;
-
 import java.util.*;
 
 import ua.lviv.iot.lab2.model.ComputerPart;
 
+
+@Getter
 public class ComputerStoreManager implements IComputerStoreManager {
 
     private Map<String, List<ComputerPart>> detailsMap = new HashMap<>();
@@ -15,7 +17,7 @@ public class ComputerStoreManager implements IComputerStoreManager {
         details.forEach(detail -> {
             String typeName = detail.getType();
             var availableGoods = detailsMap.get(typeName);
-            if(availableGoods == null) {
+            if (availableGoods == null) {
                 availableGoods = new LinkedList<ComputerPart>();
                 detailsMap.put(typeName, availableGoods);
             }
@@ -26,14 +28,16 @@ public class ComputerStoreManager implements IComputerStoreManager {
 
     @Override
     public List<List<ComputerPart>> findByRequestedTotalPrice(List<ComputerPart> details) {
-        List<List<ComputerPart>> affordable= new LinkedList<>();
-        for (int i = 0; i< details.size(); i++){
-            int temp_sum = 0;
-            for (int j = 0; j < details.subList(0,i).size(); j++) {
-                temp_sum += details.subList(0, i).get(j).getPrice();
-            }
-            if (temp_sum < 500){
-                affordable.add(details.subList(0,i));
+        sortByPrice(details, false);
+        List<List<ComputerPart>> affordable = new LinkedList<>();
+        for (int i = 0; i < details.size(); i++) {
+
+            for (int j = i; j < details.size(); j++) {
+
+                if (totalPrice(details.subList(i, j + 1)) < 500) {
+
+                    affordable.add(details.subList(i, j + 1));
+                }
             }
         }
         return affordable;
@@ -41,22 +45,37 @@ public class ComputerStoreManager implements IComputerStoreManager {
 
 
     @Override
-    public void sortByPrice(List<ComputerPart> details, boolean is_reversed) {
+    public void sortByPrice(List<ComputerPart> details, boolean isReversed) {
 
-        if(is_reversed)
+        if (isReversed) {
             details.sort(Collections.reverseOrder(Comparator.comparing(ComputerPart::getPrice)));
-        else
+        }
+        else {
             details.sort(Comparator.comparing(ComputerPart::getPrice));
+        }
 
     }
 
     @Override
-    public void sortByManufacturer(List<ComputerPart> details, boolean is_reversed) {
+    public void sortByManufacturer(List<ComputerPart> details, boolean isReversed) {
 
-        if(is_reversed)
+        if (isReversed) {
             details.sort(Collections.reverseOrder(Comparator.comparing(ComputerPart::getManufacturer)));
-        else
+        }
+        else {
             details.sort(Comparator.comparing(ComputerPart::getManufacturer));
+        }
 
     }
+
+    @Override
+    public double totalPrice(List<ComputerPart> details) {
+        double sum = 0;
+        for (int i = 0; i < details.size(); i++) {
+            sum += details.get(i).getPrice();
+        }
+        return sum;
+    }
+
+
 }

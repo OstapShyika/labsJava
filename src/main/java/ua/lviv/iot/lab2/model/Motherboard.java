@@ -1,24 +1,28 @@
 package ua.lviv.iot.lab2.model;
 
+import lombok.Getter;
 import ua.lviv.iot.lab2.model.ComputerPart;
-
+@Getter
 public class Motherboard extends ComputerPart {
 
-    private int max_ram;
+    private int maxRAM;
 
-    public Motherboard(int price, String manufacturer, int max_ram) {
-        super(price, manufacturer);
-        this.max_ram = max_ram;
+    public Motherboard(int price, String manufacturer, int maxRAM) {
+        super("Motherboard", price, manufacturer);
+        this.maxRAM = maxRAM;
     }
 
-    public int getMaxRAM( ) {
-        return max_ram;
-    }
-    public void setMaxRAM(int max_ram) {
-        this.max_ram = max_ram;
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "maxRAM";
     }
 
-    public String toString(){
-        return super.toString() + String.format("Max RAM: %d GB", max_ram) + System.lineSeparator();
+    @Override
+    public String toCSV() {
+        return super.toCSV() + maxRAM;
+    }
+
+    public String toString() {
+        return super.toString() + String.format("Max RAM: %d GB", maxRAM) + System.lineSeparator();
     }
 }

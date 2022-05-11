@@ -1,24 +1,28 @@
 package ua.lviv.iot.lab2.model;
 
-import ua.lviv.iot.lab2.model.ComputerPart;
+import lombok.Getter;
 
+@Getter
 public class PSU extends ComputerPart {
 
     private int wattage;
 
-    public PSU(int price, String manufacturer, int wattage){
-        super(price, manufacturer);
+    public PSU(int price, String manufacturer, int wattage) {
+        super("PSU", price, manufacturer);
         this.wattage = wattage;
     }
 
-    public int getWattage( ) {
-        return wattage;
-    }
-    public void setWattage(int wattage) {
-        this.wattage = wattage;
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "wattage";
     }
 
-    public String toString(){
+    @Override
+    public String toCSV() {
+        return super.toCSV() + wattage;
+    }
+
+    public String toString() {
         return super.toString() + String.format("Wattage: %d Wtt", wattage) + System.lineSeparator();
     }
 }

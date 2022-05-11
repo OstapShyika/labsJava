@@ -1,25 +1,30 @@
 package ua.lviv.iot.lab2.model;
 
+import lombok.Getter;
 import ua.lviv.iot.lab2.model.ComputerPart;
 
+@Getter
 public class CPU extends ComputerPart {
 
     private double frequency;
 
-    public CPU(int price, String manufacturer, double frequency){
-        super(price, manufacturer);
-        this.frequency = frequency;
-    }
-
-    public double getFrequency( ) {
-        return frequency;
-    }
-    public void setFrequency(double frequency) {
+    public CPU(int price, String manufacturer, double frequency) {
+        super("CPU", price, manufacturer);
         this.frequency = frequency;
     }
 
     @Override
-    public String toString(){
+    public String getHeaders() {
+        return super.getHeaders() + "frequency";
+    }
+
+    @Override
+    public String toCSV() {
+        return super.toCSV() + frequency;
+    }
+
+    @Override
+    public String toString() {
         return super.toString() + String.format("Frequency: %.1f HZ", frequency) + System.lineSeparator();
     }
 }

@@ -6,11 +6,11 @@ public interface IComputerStoreManager {
 
     void addComputerPart(List <ComputerPart> details);
 
-    public List<List<ComputerPart>> findByRequestedTotalPrice(List<ComputerPart> details);
+    List<List<ComputerPart>> findByRequestedTotalPrice(List<ComputerPart> details);
 
-    void sortByPrice(List <ComputerPart> details, boolean is_reversed);
+    void sortByPrice(List <ComputerPart> details, boolean isReversed);
 
-    void sortByManufacturer(List <ComputerPart> details, boolean is_reversed);
+    void sortByManufacturer(List <ComputerPart> details, boolean isReversed);
 
-
+    double totalPrice(List <ComputerPart> details);
 }

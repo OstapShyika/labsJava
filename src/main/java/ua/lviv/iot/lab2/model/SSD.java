@@ -1,44 +1,38 @@
 package ua.lviv.iot.lab2.model;
 
+import lombok.Getter;
 import ua.lviv.iot.lab2.model.ComputerPart;
 
+
+@Getter
 public class SSD extends ComputerPart {
 
-    private int storage_capacity;
-    private int read_speed;
-    private int write_speed;
+    private int storageCapacity;
+    private int readSpeed;
+    private int writeSpeed;
 
-    public SSD(int price, String manufacturer, int storage_capacity, int read_speed, int write_speed){
-        super(price, manufacturer);
-        this.storage_capacity = storage_capacity;
-        this.read_speed = read_speed;
-        this.write_speed = write_speed;
-    }
 
-    public int getStorageCapacity( ) {
-        return storage_capacity;
-    }
-    public void setStorageCapacity(int storage_capacity) {
-        this.storage_capacity = storage_capacity;
+
+    public SSD(int price, String manufacturer, int storageCapacity, int readSpeed, int writeSpeed) {
+        super("SSD", price, manufacturer);
+        this.storageCapacity = storageCapacity;
+        this.readSpeed = readSpeed;
+        this.writeSpeed = writeSpeed;
     }
 
-    public int getReadSpeed( ) {
-        return read_speed;
-    }
-    public void setReadSpeed(int read_speed) {
-        this.read_speed = read_speed;
+    @Override
+    public String getHeaders() {
+        return super.getHeaders() + "storageCapacity, readSpeed, writeSpeed";
     }
 
-    public int getWriteSpeed( ) {
-        return write_speed;
-    }
-    public void setWriteSpeed(int write_speed) {
-        this.write_speed = write_speed;
+    @Override
+    public String toCSV() {
+        return super.toCSV() + storageCapacity + ", " + readSpeed + ", " + writeSpeed;
     }
 
-    public String toString(){
-        return super.toString() + String.format("Storage: %d GB, " +
-                "Read Speed: %d mb/s, " +
-                "Write Speed: %d mb/s", storage_capacity, read_speed, write_speed) + System.lineSeparator();
+    public String toString() {
+        return super.toString() + String.format("Storage: %d GB, "
+                + "Read Speed: %d mb/s, "
+                + "Write Speed: %d mb/s", storageCapacity, readSpeed, writeSpeed) + System.lineSeparator();
     }
 }

@@ -1,0 +1,14 @@
+price, manufacturer, type, frequency
+700, GG, CPU, 55.0
+price, manufacturer, type, weight
+400, FFF, Case, 1
+price, manufacturer, type, material
+700, PPO, Keyboard, dsj
+price, manufacturer, type, size, resolution
+700, sAMSUNG, Monitor, 2, 398
+price, manufacturer, type, maxRAM
+700, Intell, Motherboard, 1
+price, manufacturer, type, wattage
+99, fgm, PSU, 2
+price, manufacturer, type, storageCapacity, readSpeed, writeSpeed
+700, Shaome, SSD, 1, 1, 1
