@@ -6,9 +6,10 @@ import java.util.List;
 public class Palindrome {
 
 
-    public static List<String> detectPalindromes(String text) {
-        String modifiedText = text.replaceAll(", ", "");
-        String[] separateWords = modifiedText.toLowerCase().split("\\W");
+    public List<String> detectPalindromes(String text) {
+        String modifiedText1 = text.replaceAll("[\\W&&\\S]", "");
+        String modifiedText2 = modifiedText1.replaceAll("(\\s)\\1+", "$1");
+        String[] separateWords = modifiedText2.toLowerCase().split("\\W");
         List<String> palindromes = new ArrayList<>();
 
         for (String word : separateWords) {
