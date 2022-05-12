@@ -10,7 +10,7 @@ class PalindromeTest {
     @Test
     void detectNoPalindromesInASentence() {
         String testText = "There is no palindromes, dude!";
-        List<String> expected = new ArrayList<>(Arrays.asList());
+        List<String> expected = new ArrayList<>();
         Assertions.assertEquals(expected, Palindrome.detectPalindromes(testText));
     }
 
